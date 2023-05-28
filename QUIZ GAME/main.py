@@ -142,21 +142,33 @@ class QuizGame(tk.Tk):
         
     def user_inputA(self):
         print("a")
+        self.button4.config(background="#fff")
+        self.button3.config(background="#fff")
+        self.button2.config(background="#fff")
         self.button1.config(background="#4040ff")
         self.u_input='a'
         return self.u_input
     def user_inputB(self):
         print("b")
+        self.button4.config(background="#fff")
+        self.button3.config(background="#fff")
+        self.button1.config(background="#fff")
         self.button2.config(background="#4040ff")
         self.u_input='b'
         return self.u_input
     def user_inputC(self):
         print("c")
+        self.button4.config(background="#fff")
+        self.button1.config(background="#fff")
+        self.button2.config(background="#fff")
         self.button3.config(background="#4040ff")
         self.u_input='c'
         return self.u_input
     def user_inputD(self):
         print("d")
+        self.button1.config(background="#fff")
+        self.button3.config(background="#fff")
+        self.button2.config(background="#fff")
         self.button4.config(background="#4040ff")
         self.u_input='d'
         return self.u_input
