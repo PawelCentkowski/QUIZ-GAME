@@ -14,6 +14,7 @@ class QuizGame(tk.Tk):
         self.iconphoto(False, self.p1)
         self.questions = self.load_questions(questions_file)
         self.answers = self.get_answer(questions_file)
+        self.correct_answers = self.get_correct_answer(questions_file)
         self.current_question = None
         self.current_answer = None
         self.current_answers = []
@@ -22,7 +23,7 @@ class QuizGame(tk.Tk):
         self.counter = 0
         self.create_widgets()
         self.next_question()
-
+        self.input = ""
         #self.lines2 = []
         #self.question = []
         #self.answer_list = []
@@ -68,7 +69,7 @@ class QuizGame(tk.Tk):
                 answer_list.append(c)
                 d = answer[question_index+4]  
                 answer_list.append(d)          
-            print(answer_list)
+            #print(answer_list)
             return answer_list
      
     def create_widgets(self):
@@ -84,19 +85,19 @@ class QuizGame(tk.Tk):
         self.answerD =  self.answers[3]
         
         x = self.counter
-        self.button1 = tk.Button(text=  self.answers[36-x*4], font=("Arial", 16), width=40)#-1
+        self.button1 = tk.Button(text=  self.answers[36-x*4], font=("Arial", 16), width=40, command=self.user_input)
         self.button1.config(background="#fff", anchor="center",justify="center",)
         self.button1.pack(pady=5)
 
-        self.button2 = tk.Button(text=  self.answers[37-x*4], font=("Arial", 16), width=40)#-1
+        self.button2 = tk.Button(text=  self.answers[37-x*4], font=("Arial", 16), width=40, command=self.user_input)
         self.button2.config(background="#fff", anchor="center",justify="center")
         self.button2.pack(pady=5)
 
-        self.button3 = tk.Button(text=  self.answers[38-x*4], font=("Arial", 16), width=40)#-1
+        self.button3 = tk.Button(text=  self.answers[38-x*4], font=("Arial", 16), width=40, command=self.user_input)
         self.button3.config(background="#fff", anchor="center",justify="center")
         self.button3.pack(pady=5)
 
-        self.button4 = tk.Button(text=  self.answers[39-x*4], font=("Arial", 16), width=40)#-1
+        self.button4 = tk.Button(text=  self.answers[39-x*4], font=("Arial", 16), width=40, command=self.user_input)
         self.button4.config(background="#fff", anchor="center",justify="center")
         self.button4.pack(pady=5)
       
@@ -126,7 +127,7 @@ class QuizGame(tk.Tk):
             self.button2.config(text=  self.answers[37-x*4])
             self.button3.config(text=  self.answers[38-x*4])
             self.button4.config(text=  self.answers[39-x*4])
-
+            print(self.correct_answers)
             self.button_check.config(state=tk.NORMAL)
             self.button_next.config(state=tk.DISABLED) 
          
@@ -137,8 +138,20 @@ class QuizGame(tk.Tk):
     def create_option_buttons(self):
         pass
         
+    def user_input(self):
+        print("działa")
 
-
+    def get_correct_answer(self,file):
+        correct_answers = []
+        with open(file, "r",encoding="UTF-8") as f:
+            lines = f.readlines()
+        answer = [line.strip() for line in lines]
+        if 1==1:
+            for x in range(10):
+                a = answer[5+x*6]
+                correct_answers .append(a)       
+            return  correct_answers 
+        
        
 
     def check_answer(self):
