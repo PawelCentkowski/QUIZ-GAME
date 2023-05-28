@@ -13,10 +13,16 @@ class QuizGame(tk.Tk):
         # Setting icon of master window
         self.iconphoto(False, self.p1)
         self.questions = self.load_questions(questions_file)
+        self.answers = self.get_answer(questions_file)
         self.current_question = None
+        self.current_answer = None
+        self.current_answers = []
+        self.option = None
         self.score = 0
+        self.counter = 0
         self.create_widgets()
         self.next_question()
+
         #self.lines2 = []
         #self.question = []
         #self.answer_list = []
@@ -35,42 +41,70 @@ class QuizGame(tk.Tk):
         with open(file, "r",encoding="UTF-8") as f:
             lines = f.readlines()
         question = [line.strip() for line in lines]
+        lines2n = []
         lines2 = []
         for x in range(10):
-            lines2.append(lines[x*6])
-        random.shuffle(lines2)
+            lines2n.append(lines[x*6])
+        #usuwa nowe linie bruh
+        lines2 = [element.strip() for element in lines2n]
+        #random.shuffle(lines2)
         return lines2
-    """""
-    def get_answer(self):
-
-        lines = question
-       # print(self.lines2)
-       # print("pod tym inna lista")
-        #print(self.lines)
-        if lines2[0] in lines:
+    
+    def get_answer(self,file):
+        answer_list = []  
+        with open(file, "r",encoding="UTF-8") as f:
+            lines = f.readlines()
+        answer = [line.strip() for line in lines]
+        if self.questions[0] in answer:
+        #if 1==1:
+         
             for x in range(10):
-                question_index = lines.index(lines2[x])
-                a = lines[question_index+1]
-                b = lines[question_index+2]
-                c = lines[question_index+3]
-                d = lines[question_index+4]     
-            answer_list = [a, b, c, d]     
+                question_index = answer.index(self.questions[x])
+                a = answer[question_index+1]
+                answer_list.append(a)
+                b = answer[question_index+2]
+                answer_list.append(b)
+                c = answer[question_index+3]
+                answer_list.append(c)
+                d = answer[question_index+4]  
+                answer_list.append(d)          
+            print(answer_list)
             return answer_list
-        """""
+     
     def create_widgets(self):
         self.label_question = tk.Label(self, text="", wraplength=800, font=("Arial", 25))
         self.label_question.config(background = "#555",padx=20,pady=20, height=5)
         self.label_question.pack()
 
-        #self.entry_answer = tk.Entry(self)
-        #self.entry_answer.pack(pady=10)
+        self.answers
         
-        #self.question_label = tk.Label(text="", font=("Arial", 20))
-        #self.question_label.pack(pady=20)
-        #self.get_answer()
-        self.option_buttons = []
-        self.create_option_buttons()
+        self.answerA =  self.answers[0]
+        self.answerB =  self.answers[1]
+        self.answerC =  self.answers[2]
+        self.answerD =  self.answers[3]
         
+        x = self.counter
+        self.button1 = tk.Button(text=  self.answers[36-x*4], font=("Arial", 16), width=40)#-1
+        self.button1.config(background="#fff", anchor="center",justify="center",)
+        self.button1.pack(pady=5)
+
+        self.button2 = tk.Button(text=  self.answers[37-x*4], font=("Arial", 16), width=40)#-1
+        self.button2.config(background="#fff", anchor="center",justify="center")
+        self.button2.pack(pady=5)
+
+        self.button3 = tk.Button(text=  self.answers[38-x*4], font=("Arial", 16), width=40)#-1
+        self.button3.config(background="#fff", anchor="center",justify="center")
+        self.button3.pack(pady=5)
+
+        self.button4 = tk.Button(text=  self.answers[39-x*4], font=("Arial", 16), width=40)#-1
+        self.button4.config(background="#fff", anchor="center",justify="center")
+        self.button4.pack(pady=5)
+      
+
+        #self.option_buttons = []
+        #self.create_option_buttons()
+        #self.current_answer = self.create_option_buttons()
+        #self.create_option_buttons()
 
         self.button_check = tk.Button(self, text="Sprawdź", command=self.check_answer)
         self.button_check.pack(pady=5)
@@ -85,23 +119,27 @@ class QuizGame(tk.Tk):
         if self.questions:
             self.current_question = self.questions.pop()
             self.label_question.config(text=self.current_question)
-           #self.entry_answer.delete(0, tk.END)
+            self.current_answers = self.answers
+            self.counter+=1
+            x = self.counter-1
+            self.button1.config(text =self.answers[36-x*4])
+            self.button2.config(text=  self.answers[37-x*4])
+            self.button3.config(text=  self.answers[38-x*4])
+            self.button4.config(text=  self.answers[39-x*4])
+
             self.button_check.config(state=tk.NORMAL)
-            self.button_next.config(state=tk.DISABLED)
+            self.button_next.config(state=tk.DISABLED) 
+         
         else:
             messagebox.showinfo("Koniec gry", f"Twój wynik: {self.score}/{len(self.questions)+self.score}")
             self.destroy()
 
     def create_option_buttons(self):
+        pass
+        
 
-        
-        
-        listka = ["a","b","c","d"]
-        for _ in range(4):
-            button = tk.Button(text= listka[_], font=("Arial", 16), width=40)#-1
-            button.config(background="#fff")
-            button.pack(pady=5)
-            self.option_buttons.append(button)
+
+       
 
     def check_answer(self):
         #answer = self.entry_answer.get()
