@@ -23,7 +23,8 @@ class QuizGame(tk.Tk):
         self.counter = 0
         self.create_widgets()
         self.next_question()
-        self.input = ""
+        self.x=""
+        self.u_input = ""
         #self.lines2 = []
         #self.question = []
         #self.answer_list = []
@@ -85,19 +86,19 @@ class QuizGame(tk.Tk):
         self.answerD =  self.answers[3]
         
         x = self.counter
-        self.button1 = tk.Button(text=  self.answers[36-x*4], font=("Arial", 16), width=40, command=self.user_input)
+        self.button1 = tk.Button(text=  self.answers[36-x*4], font=("Arial", 16), width=40, command=self.user_inputA,)
         self.button1.config(background="#fff", anchor="center",justify="center",)
         self.button1.pack(pady=5)
 
-        self.button2 = tk.Button(text=  self.answers[37-x*4], font=("Arial", 16), width=40, command=self.user_input)
+        self.button2 = tk.Button(text=  self.answers[37-x*4], font=("Arial", 16), width=40, command=self.user_inputB,)
         self.button2.config(background="#fff", anchor="center",justify="center")
         self.button2.pack(pady=5)
 
-        self.button3 = tk.Button(text=  self.answers[38-x*4], font=("Arial", 16), width=40, command=self.user_input)
+        self.button3 = tk.Button(text=  self.answers[38-x*4], font=("Arial", 16), width=40, command=self.user_inputC,)
         self.button3.config(background="#fff", anchor="center",justify="center")
         self.button3.pack(pady=5)
 
-        self.button4 = tk.Button(text=  self.answers[39-x*4], font=("Arial", 16), width=40, command=self.user_input)
+        self.button4 = tk.Button(text=  self.answers[39-x*4], font=("Arial", 16), width=40, command=self.user_inputD,)
         self.button4.config(background="#fff", anchor="center",justify="center")
         self.button4.pack(pady=5)
       
@@ -118,28 +119,48 @@ class QuizGame(tk.Tk):
 
     def next_question(self):
         if self.questions:
+            self.u_input = ""
             self.current_question = self.questions.pop()
             self.label_question.config(text=self.current_question)
             self.current_answers = self.answers
             self.counter+=1
             x = self.counter-1
-            self.button1.config(text =self.answers[36-x*4])
-            self.button2.config(text=  self.answers[37-x*4])
-            self.button3.config(text=  self.answers[38-x*4])
-            self.button4.config(text=  self.answers[39-x*4])
-            print(self.correct_answers)
+            self.button1.config(text =self.answers[36-x*4],background="#fff")
+            self.button2.config(text=  self.answers[37-x*4],background="#fff")
+            self.button3.config(text=  self.answers[38-x*4],background="#fff")
+            self.button4.config(text=  self.answers[39-x*4],background="#fff")
+            #print(self.correct_answers)
             self.button_check.config(state=tk.NORMAL)
             self.button_next.config(state=tk.DISABLED) 
          
         else:
-            messagebox.showinfo("Koniec gry", f"Twój wynik: {self.score}/{len(self.questions)+self.score}")
+            messagebox.showinfo("Koniec gry", f"Twój wynik: {self.score}/10")
             self.destroy()
 
-    def create_option_buttons(self):
+    def create_option_buttons(self,x=""):
         pass
         
-    def user_input(self):
-        print("działa")
+    def user_inputA(self):
+        print("a")
+        self.button1.config(background="#4040ff")
+        self.u_input='a'
+        return self.u_input
+    def user_inputB(self):
+        print("b")
+        self.button2.config(background="#4040ff")
+        self.u_input='b'
+        return self.u_input
+    def user_inputC(self):
+        print("c")
+        self.button3.config(background="#4040ff")
+        self.u_input='c'
+        return self.u_input
+    def user_inputD(self):
+        print("d")
+        self.button4.config(background="#4040ff")
+        self.u_input='d'
+        return self.u_input
+
 
     def get_correct_answer(self,file):
         correct_answers = []
@@ -150,14 +171,16 @@ class QuizGame(tk.Tk):
             for x in range(10):
                 a = answer[5+x*6]
                 correct_answers .append(a)       
-            return  correct_answers 
+            print(correct_answers)
+            return correct_answers 
         
        
 
     def check_answer(self):
         #answer = self.entry_answer.get()
-        answer = "a"
-        if answer.lower() == "tak":
+        answer = self.u_input
+        #print(f"O TO JEST: {self.correct_answers[10-self.counter]}")
+        if answer.lower() == self.correct_answers[10-self.counter]:
             self.score += 1
         self.label_score.config(text=f"Wynik: {self.score}")
         self.button_check.config(state=tk.DISABLED)
