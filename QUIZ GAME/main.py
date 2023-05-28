@@ -1,4 +1,3 @@
-from kosz.settings import*
 import tkinter as tk
 from tkinter import messagebox
 import random
@@ -18,6 +17,9 @@ class QuizGame(tk.Tk):
         self.score = 0
         self.create_widgets()
         self.next_question()
+        #self.lines2 = []
+        #self.question = []
+        #self.answer_list = []
     #dowload screen res and justifies the application window
     def screen_initiator( self):
         self.window_width = 1600
@@ -28,13 +30,33 @@ class QuizGame(tk.Tk):
         self.center_y = int(self.screen_height/2-self.window_height/2)
         self.geometry(f"{self.window_width}x{self.window_height}+{self.center_x}+{self.center_y}")
 
+        
     def load_questions(self, file):
-        with open(file, "r") as f:
+        with open(file, "r",encoding="UTF-8") as f:
             lines = f.readlines()
-        questions = [line.strip() for line in lines]
-        random.shuffle(questions)
-        return questions
+        question = [line.strip() for line in lines]
+        lines2 = []
+        for x in range(10):
+            lines2.append(lines[x*6])
+        random.shuffle(lines2)
+        return lines2
+    """""
+    def get_answer(self):
 
+        lines = question
+       # print(self.lines2)
+       # print("pod tym inna lista")
+        #print(self.lines)
+        if lines2[0] in lines:
+            for x in range(10):
+                question_index = lines.index(lines2[x])
+                a = lines[question_index+1]
+                b = lines[question_index+2]
+                c = lines[question_index+3]
+                d = lines[question_index+4]     
+            answer_list = [a, b, c, d]     
+            return answer_list
+        """""
     def create_widgets(self):
         self.label_question = tk.Label(self, text="", wraplength=800, font=("Arial", 25))
         self.label_question.config(background = "#555",padx=20,pady=20, height=5)
@@ -45,9 +67,10 @@ class QuizGame(tk.Tk):
         
         #self.question_label = tk.Label(text="", font=("Arial", 20))
         #self.question_label.pack(pady=20)
-
+        #self.get_answer()
         self.option_buttons = []
         self.create_option_buttons()
+        
 
         self.button_check = tk.Button(self, text="Sprawdź", command=self.check_answer)
         self.button_check.pack(pady=5)
@@ -70,8 +93,12 @@ class QuizGame(tk.Tk):
             self.destroy()
 
     def create_option_buttons(self):
+
+        
+        
+        listka = ["a","b","c","d"]
         for _ in range(4):
-            button = tk.Button(text=self.questions[_+1], font=("Arial", 16), width=40)
+            button = tk.Button(text= listka[_], font=("Arial", 16), width=40)#-1
             button.config(background="#fff")
             button.pack(pady=5)
             self.option_buttons.append(button)
