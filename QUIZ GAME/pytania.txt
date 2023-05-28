@@ -3,57 +3,58 @@ a) Adenina, tymina, guanina, cytozyna
 b) Adenina, tymina, seryna, cytozyna
 c) Adenina, tyrozyna, serynina, cysteina
 d) Alanina, tyrozyna, glicyna, cysteina
-poprawna odpowiedź :a
-2) Jaki proces odpowiada za przekształcenie glukozy w energię w komórkach? C
+a
+2) Jaki proces odpowiada za przekształcenie glukozy w energię w komórkach? 
 a) Fotosynteza
 b) Fermentacja
 c) Glikoliza
 d) Transkrypcja
-
-3) Który pierwiastek chemiczny jest najliczniejszy w atmosferze Ziemii? A
+c
+3) Który pierwiastek chemiczny jest najliczniejszy w atmosferze Ziemii? 
 a) Azot
 b) Tlen
 c) Wungiel
 d) Argon
-
-4) Jaką jednostkę używa się do mierzenia energii w układzie SI? D
+a
+4) Jaką jednostkę używa się do mierzenia energii w układzie SI? 
 a) Kalorie
 b) Elektrony
 c) Waty
 d) Joule
-
-5) Jaka cząsteczka jest nośnikiem dziedziczenia w organizmach? A
+d
+5) Jaka cząsteczka jest nośnikiem dziedziczenia w organizmach? 
 a) DNA
 b) RNA
 c) Proteiny
 d) Lipidy
-
-6) Który naukowiec sformuował teorię ogólnej względności? A
-a) Albert Einstein
-b) Isaac Newton
+a
+6) Który naukowiec sformuował teorię ogólnej względności? 
+a) Isaac Newton
+b) Albert Einstein
 c) Niels Bohr
 d) Marie Curie
-
-7) Jak nazywa się proces, w którym jądra atomowe łączą się ze sobą, tworząc cięższe jądra i uwalniając energię? A
+b
+7) Jak nazywa się proces, w którym jądra atomowe łączą się ze sobą, tworząc cięższe jądra i uwalniając energię? 
 a) Fuzja
 b) Fisja
 c) Sublimacja
 d) Dyfuzja
-
-8) Jaki proces zachodzi w chloroplastach roślin podczas fotosyntezy? D
+a
+8) Jaki proces zachodzi w chloroplastach roślin podczas fotosyntezy? 
 a) Synteza białek
 b) Spalanie glukozy
 c) Przeprowadzanie oddychania komórkowego
-d) Przetwarzanie światła słonecznego na energię chemiczną
-
-9) Który z tych naukowców był odpowiedzialny za odkrycie promieniowania rentgenowskiego? A
+d) Zmiana światła słonecznego na e.chemiczną
+d
+9) Który z tych naukowców był odpowiedzialny za odkrycie promieniowania rentgenowskiego? 
 a) Wilhelm Conrad Roentgen
 b) Max Plank
 c) Maria Curie
 d) Albert Einstein
-
-10) Jak nazywa się ptoces, w którym jądro atomowe emituje cząsteczkę alfa, zmieniając się w inne jądro chemiczne? A
+a
+10) Jak nazywa się ptoces, w którym jądro atomowe emituje cząsteczkę alfa, zmieniając się w inne jądro chemiczne? 
 a) Rozpad alfa
 b) Rozpad beta
 c) Rozpad famma
 d) Rozpad delta
+a
